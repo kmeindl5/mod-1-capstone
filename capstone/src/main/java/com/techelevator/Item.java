@@ -1,19 +1,27 @@
 package com.techelevator;
 
-public abstract class Item implements VendableItems {
+import java.math.BigDecimal;
+
+public class Item implements VendableItems {
 
     public String locationID;
     public String name;
-    public double price;
+    public BigDecimal price;
     public String sound;
     public int stock = 5;
 
-    public Item(String locationID, String name, double price, String sound, int stock) {
+    public Item (){
+
+    }
+    public Item(String locationID, String name, BigDecimal price, String sound, int stock) {
         this.locationID = locationID;
         this.name = name;
         this.price = price;
         this.sound = sound;
         this.stock = stock;
+    }
+
+    public Item(String locationID, String name) {
     }
 
     public String getLocationID() {
@@ -32,11 +40,11 @@ public abstract class Item implements VendableItems {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice() {
         this.price = price;
     }
 
