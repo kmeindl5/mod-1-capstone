@@ -17,6 +17,7 @@ public class VendingMachineCLI{
 	private Menu menu;
 
 	Scanner userInput = new Scanner(System.in);
+	Scanner inputNum = new Scanner(System.in);
 
 
 
@@ -26,7 +27,8 @@ public class VendingMachineCLI{
 
 	public void run() throws FileNotFoundException {
 		Inventory showList = new Inventory();
-		Calculator vendCalc = new Calculator();
+		BigDecimal currentBalance = new BigDecimal(0.00);
+
 
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -35,7 +37,7 @@ public class VendingMachineCLI{
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 
 
-
+				//For each loop?
 				System.out.println((showList.getListOfProducts().get("A1").locationID) + "|"+ showList.getListOfProducts().get("A1").getName() + "|$" + showList.getListOfProducts().get("A1").getPrice());
 				System.out.println((showList.getListOfProducts().get("A2").locationID) + "|"+ showList.getListOfProducts().get("A2").getName() + "|$" + showList.getListOfProducts().get("A2").getPrice());
 				System.out.println((showList.getListOfProducts().get("A3").locationID) + "|"+ showList.getListOfProducts().get("A3").getName() + "|$" + showList.getListOfProducts().get("A3").getPrice());
@@ -85,23 +87,34 @@ public class VendingMachineCLI{
 				String inputCode = userInput.nextLine();
 
 				if(inputCode.equals("1")){
-					BigDecimal startingBalance = BigDecimal.valueOf(0.00);
 					boolean usingFeeder = true;
-
-					while(usingFeeder){
+					Calculator vendCalc = new Calculator();
 					System.out.println("Please insert $1.00 ,$2.00, $5.00, or $10.00: ");
-					startingBalance = userInput.nextBigDecimal();
-					BigDecimal insertedMoney = startingBalance;
-					BigDecimal totalBalance = startingBalance.add(insertedMoney);
-					System.out.println("Current Money Provided: " + totalBalance);
+					while (usingFeeder) {
+						currentBalance= vendCalc.calcChange(userInput, currentBalance);
+						System.out.println("Current funds: " + currentBalance);
+						System.out.println("(R) to return to Purchase menu");
+						userInput.nextLine();
+						if(inputCode.equals("R") ){
+							System.out.println("(1) Feed Money");
+							System.out.println("(2) Select Product");
+							System.out.println("(3) Finish Transaction");
+							System.out.println("Please make a selection: ");
+							inputCode = userInput.nextLine();
+							usingFeeder = false;
+
+						}
+
 					}
+					System.out.println("Current funds: " + currentBalance);
+
 
 				}else if(inputCode.equals("2")){
 					System.out.println("Please enter the product slot location: ");
 					String location = userInput.next();
 					List<String> order = new ArrayList<>();
 					if(location.equals(showList.getListOfProducts().keySet())){
-						
+
 					}
 
 				}else if(inputCode.equals("3")){

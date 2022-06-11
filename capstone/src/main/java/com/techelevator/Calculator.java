@@ -16,13 +16,52 @@ public class Calculator {
     }
 
     Scanner moneyInput = new Scanner(System.in);
+     public BigDecimal calcChange(Scanner moneyInput, BigDecimal currentValue){
+
+
+         BigDecimal totalBalance = new BigDecimal(0.00);
+
+         //System.out.println("Your current money provided is: " + currentFunds);
+         //System.out.println("Please insert $1.00 ,$2.00, $5.00, or $10.00: ");
+         BigDecimal insertedMoney = moneyInput.nextBigDecimal();
+
+
+            currentValue = currentValue.add( insertedMoney);
+
+
+         //System.out.println("Your current money provided is: " + totalBalance);
+         //System.out.println("Would you like to add more? 1 - Yes or 2 - No");
+         return currentValue;
+     }
 
     public Calculator(){
-        BigDecimal currentFunds = moneyInput.nextBigDecimal();
+       /* BigDecimal currentFunds = moneyInput.nextBigDecimal();
         System.out.println("Your current money provided is: " + currentFunds);
-        System.out.println("Would you like to add more? 1 - Yes or 2 - No");
+        System.out.println("Would you like to add more? 1 - Yes or 2 - No");*/
+        return;
+
 
     }
+
+/*BigDecimal startingBalance = new BigDecimal(0.00);
+					String userLine = new String();
+					boolean usingFeeder = true;
+					BigDecimal insertedMoney = new BigDecimal("0.00");
+					BigDecimal totalBalance = new BigDecimal(0.00);
+
+
+
+					while(usingFeeder){
+					System.out.println("Please insert $1.00 ,$2.00, $5.00, or $10.00: ");
+					userLine = userInput.next();
+						Calculator vendCalc = new Calculator();
+						vendCalc.calcChange(userInput);
+
+						startingBalance = BigDecimal.valueOf(Long.parseLong(userLine));
+					//startingBalance += BigDecimal.valueOf(Double.valueOf(userLine));
+					System.out.println("Current Money Provided: " + totalBalance);
+					}*/
+
 
 
 
