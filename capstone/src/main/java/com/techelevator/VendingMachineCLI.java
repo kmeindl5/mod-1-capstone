@@ -1,4 +1,5 @@
 package com.techelevator;
+import java.math.BigDecimal;
 import java.util.List;
 import com.techelevator.view.Menu;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class VendingMachineCLI{
 
 	public void run() throws FileNotFoundException {
 		Inventory showList = new Inventory();
-
+		Calculator vendCalc = new Calculator();
 
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -75,8 +76,40 @@ public class VendingMachineCLI{
 				System.out.println((showList.getListOfProducts().get("D3").locationID) + "|"+ showList.getListOfProducts().get("D3").getName() );
 				System.out.println((showList.getListOfProducts().get("D4").locationID) + "|"+ showList.getListOfProducts().get("D4").getName() );
 				System.out.println("----------------");
+				System.out.println("Current Money Provided: ");
+				System.out.println();
+				System.out.println("(1) Feed Money");
+				System.out.println("(2) Select Product");
+				System.out.println("(3) Finish Transaction");
 				System.out.println("Please make a selection: ");
 				String inputCode = userInput.nextLine();
+
+				if(inputCode.equals("1")){
+					BigDecimal startingBalance = BigDecimal.valueOf(0.00);
+					boolean usingFeeder = true;
+
+					while(usingFeeder){
+					System.out.println("Please insert $1.00 ,$2.00, $5.00, or $10.00: ");
+					startingBalance = userInput.nextBigDecimal();
+					BigDecimal insertedMoney = startingBalance;
+					BigDecimal totalBalance = startingBalance.add(insertedMoney);
+					System.out.println("Current Money Provided: " + totalBalance);
+					}
+
+				}else if(inputCode.equals("2")){
+					System.out.println("Please enter the product slot location: ");
+					String location = userInput.next();
+					List<String> order = new ArrayList<>();
+					if(location.equals(showList.getListOfProducts().keySet())){
+						
+					}
+
+				}else if(inputCode.equals("3")){
+
+				}else{
+					System.out.println("Invalid Selection.");
+				}
+
 
 
 
