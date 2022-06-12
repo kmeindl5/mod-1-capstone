@@ -97,7 +97,7 @@ public class VendingMachineCLI{
 						currentBalance= vendCalc.calcFunds(userInput, currentBalance);
 						System.out.println("Current funds: " + currentBalance);
 
-						System.out.println(returnPurchaseMenu);
+						System.out.println(returnPurchaseMenu.buttonDisplay());
 
 						System.out.println("Please make a selection: ");
 						String purchaseCode = userInput.nextLine();

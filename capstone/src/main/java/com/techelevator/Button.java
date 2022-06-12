@@ -11,8 +11,11 @@ public class Button {
         buttonMenu.put("2", "Select Product");
         buttonMenu.put("3","Finish Transaction");
 
-
-
+    }
+    public String buttonDisplay(){
+        for(String buttonKey: buttonMenu.keySet()){
+            System.out.println(buttonKey +" " + buttonMenu.get(buttonKey));
+        }return buttonDisplay();
     }
 
 
